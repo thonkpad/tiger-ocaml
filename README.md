@@ -8,4 +8,4 @@ OCaml implementation of the Tiger language and compiler as defined by Andrew W. 
 - [Reference manual for Tiger syntax](https://www.lrde.epita.fr/~akim/ccmp/old/tiger-manual/tiger.pdf)
 
 # Credits
-- Lexer off of this article by Vasily Yorkin: https://vyorkin.org/posts/making-of-tiger-2-lexical-analysis/
+- Lexer was based off of this article by Vasily Yorkin: https://vyorkin.org/posts/making-of-tiger-2-lexical-analysis/
