@@ -1,2 +1,16 @@
+; (menhir
+;  (modules parser))
+
+(ocamllex lexer)
+
 (library
- (name compiler))
+ (name compiler)
+ (modules lexer syntax)
+ (libraries core)
+ (preprocess
+  (pps ppx_deriving.show)))
+
+(env
+ (dev
+  (flags
+   (:standard -warn-error -A))))

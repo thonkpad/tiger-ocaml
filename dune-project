@@ -1,5 +1,7 @@
 (lang dune 3.18)
 
+(using menhir 3.0)
+
 (name tigerml)
 
 (generate_opam_files true)
