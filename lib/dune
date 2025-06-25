@@ -6,7 +6,7 @@
 (library
  (name compiler)
  (modules lexer syntax)
- (libraries core)
+ (libraries)
  (preprocess
   (pps ppx_deriving.show)))
 

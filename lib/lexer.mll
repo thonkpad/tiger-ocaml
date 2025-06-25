@@ -1,7 +1,6 @@
 {
 open Lexing
 open Syntax
-open Base
 
 exception SyntaxError of string
 }
@@ -71,7 +70,7 @@ rule read = parse
      | ":" { COLON }
      | "," { COMMA }
 
-     | int { INT (Int.of_string (Lexing.lexeme lexbuf)) }
+     | int { INT (int_of_string (Lexing.lexeme lexbuf)) }
      | id { ID (Lexing.lexeme lexbuf) }
      | _ { raise (SyntaxError ("Unexpected character: " ^ Lexing.lexeme lexbuf)) }
      | eof {EOF}
@@ -96,11 +95,11 @@ and read_comment opened = parse
     | "*/"
       { match opened with
         | _::[] -> read lexbuf
-        | _ -> read_comment (List.tl_exn opened) lexbuf
+        | _ -> read_comment (List.tl opened) lexbuf
       }
     | newline { new_line lexbuf; read_comment opened lexbuf }
     | _ { read_comment opened lexbuf }
     | eof
-      { lexbuf.lex_curr_p <- List.hd_exn opened;
+      { lexbuf.lex_curr_p <- List.hd opened;
         raise (SyntaxError "Unterminated comment")
       }
