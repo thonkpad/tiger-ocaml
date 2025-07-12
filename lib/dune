@@ -1,11 +1,12 @@
-; (menhir
-;  (modules parser))
+(menhir
+ (modules parser)
+ (flags ("--dump")))
 
 (ocamllex lexer)
 
 (library
  (name compiler)
- (modules lexer syntax)
+ (modules lexer parser syntax)
  (libraries)
  (preprocess
   (pps ppx_deriving.show)))
