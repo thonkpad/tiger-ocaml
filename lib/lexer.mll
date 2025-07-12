@@ -1,15 +1,12 @@
 {
 open Lexing
-open Syntax
+open Parser
 
 exception SyntaxError of string
 }
 
 let digit = ['0'-'9']
 let int = digit+
-let frac = '.' digit*
-let exp = ['e' 'E'] ['-' '+']? int
-let float = digit* frac? exp?
 let white = [' ' '\t']+
 let newline = '\r' | '\n' | "\r\n"
 
@@ -57,7 +54,7 @@ rule read = parse
      | "+" { PLUS }
      | "-" { MINUS }
      | "*" { TIMES }
-     | "/" { DIVIDE }
+     | "/" { DIV }
 
      | "." { DOT }
      | "{" { LBRACE }
